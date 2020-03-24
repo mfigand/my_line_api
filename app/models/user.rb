@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :users_roles
+  has_many :roles, through: :users_roles
+
   validates :name, :lastname, length: { maximum: 250 }
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true,
