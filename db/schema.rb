@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_161610) do
+ActiveRecord::Schema.define(version: 2020_03_24_211445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "resource"
+    t.integer "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_roles_on_created_at"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource"], name: "index_roles_on_resource"
+    t.index ["resource_id"], name: "index_roles_on_resource_id"
+    t.index ["updated_at"], name: "index_roles_on_updated_at"
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.string "title"
+    t.integer "protagonist_id"
+    t.integer "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_timelines_on_author_id"
+    t.index ["created_at"], name: "index_timelines_on_created_at"
+    t.index ["protagonist_id"], name: "index_timelines_on_protagonist_id"
+    t.index ["title"], name: "index_timelines_on_title"
+    t.index ["updated_at"], name: "index_timelines_on_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -28,6 +54,18 @@ ActiveRecord::Schema.define(version: 2020_02_20_161610) do
     t.index ["name"], name: "index_users_on_name"
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["updated_at"], name: "index_users_on_updated_at"
+  end
+
+  create_table "users_roles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_users_roles_on_created_at"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["updated_at"], name: "index_users_roles_on_updated_at"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", unique: true
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end
