@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_221653) do
+ActiveRecord::Schema.define(version: 2020_03_25_074157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 2020_03_24_221653) do
     t.index ["protagonist_id"], name: "index_timelines_on_protagonist_id"
     t.index ["title"], name: "index_timelines_on_title"
     t.index ["updated_at"], name: "index_timelines_on_updated_at"
+  end
+
+  create_table "timelines_tellers", force: :cascade do |t|
+    t.integer "timeline_id", null: false
+    t.integer "teller_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_timelines_tellers_on_created_at"
+    t.index ["teller_id"], name: "index_timelines_tellers_on_teller_id"
+    t.index ["timeline_id", "teller_id"], name: "index_timelines_tellers_on_timeline_id_and_teller_id", unique: true
+    t.index ["timeline_id"], name: "index_timelines_tellers_on_timeline_id"
+    t.index ["updated_at"], name: "index_timelines_tellers_on_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,6 +9,13 @@ unless papa.id
   papa.save
 end
 
+mama = User.find_or_initialize_by(name: 'Irene', lastname: 'Alvarez', email: 'mama@gmail.com')
+unless mama.id
+  mama.password = '12345678'
+  mama.password_confirmation = '12345678'
+  mama.save
+end
+
 hija = User.find_or_initialize_by(name: 'Lucia', lastname: 'Figueroa', email: 'hija@gmail.com')
 unless hija.id
   hija.password = '12345678'
@@ -18,9 +25,9 @@ end
 
 # ROLES
 
-superadmin = Role.find_or_create_by(name:'superadmin')
-admin = Role.find_or_create_by(name:'admin')
-teller = Role.find_or_create_by(name:'teller')
+superadmin = Role.find_or_create_by(name: 'superadmin')
+admin = Role.find_or_create_by(name: 'admin')
+teller = Role.find_or_create_by(name: 'teller')
 
 # UserRoles associations
 
@@ -33,7 +40,6 @@ hija.roles << admin unless hija.roles.include?(admin)
 luciland = papa.created_timelines.find_or_create_by(title: 'LuciLand', protagonist: hija)
 ivanYvienen = papa.created_timelines.find_or_create_by(title: 'IvanYvienen')
 
-
 # STORIES
 
 papa.told_stories.find_or_create_by(title: 'Birhtday',
@@ -41,12 +47,20 @@ papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     protagonist: hija,
                                     author_title: 'Papá',
                                     timeline: luciland,
-                                    tags: ['nacimiento', 'cumpleaños', 'dia_cero'],
+                                    tags: %W[nacimiento cumplea\u00F1os dia_cero],
                                     description: "Lucía's Birhtday")
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('30-04-2018'),
                                     author_title: 'Papá',
                                     timeline: ivanYvienen,
-                                    tags: ['cumple', 'cumpleaños', 'birthday'],
-                                    description: "Ivan has arrived")
+                                    tags: %W[cumple cumplea\u00F1os birthday],
+                                    description: 'Ivan has arrived')
 
+# TIMELINESTELLERS
+
+# From Timeline
+luciland.tellers << mama unless luciland.tellers.include?(mama)
+ivanYvienen.tellers << mama unless luciland.tellers.include?(mama)
+# From teller
+papa.collaborative_lines << luciland unless papa.collaborative_lines.include?(luciland)
+papa.collaborative_lines << ivanYvienen unless papa.collaborative_lines.include?(ivanYvienen)

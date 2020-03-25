@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :timeline do
-    title { "MyString" }
+    title { 'MyString' }
     protagonist_id { 1 }
     author_id { 1 }
   end
