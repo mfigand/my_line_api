@@ -6,15 +6,15 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe 'validations' do
-    it 'Create a valid' do
+    it 'Create a valid user' do
       expect(create(:user)).to be_valid
     end
 
-    it 'Invalidwithout a email' do
+    it 'Invalidwithout email' do
       expect(build(:user, email: nil)).not_to be_valid
     end
 
-    it 'Invalidwithout a password' do
+    it 'Invalidwithout password' do
       expect(build(:user, password: nil)).not_to be_valid
     end
   end
