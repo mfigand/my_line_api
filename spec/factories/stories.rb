@@ -2,11 +2,13 @@
 
 FactoryBot.define do
   factory :story do
-    title { 'MyString' }
-    date { '2020-03-24' }
-    author_id { 1 }
-    author_title { 1 }
+    title { 'My Story' }
+    date { Date.parse('24/06/2020') }
+    protagonist_id { create(:user).id }
+    author_id { create(:user).id }
+    author_title { 'father' }
+    timeline_id { create(:timeline).id }
     tags { '' }
-    description { 'MyString' }
+    description { 'My story description' }
   end
 end

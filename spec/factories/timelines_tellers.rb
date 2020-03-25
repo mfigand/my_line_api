@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :timelines_teller do
-    timeline_id { 1 }
-    teller_id { 1 }
+    timeline_id { create(:timeline).id }
+    teller_id { create(:user).id }
   end
 end

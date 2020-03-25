@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :timeline do
-    title { 'MyString' }
-    protagonist_id { 1 }
-    author_id { 1 }
+    title { 'My Timeline' }
+    protagonist_id { create(:user).id }
+    author_id { create(:user).id }
   end
 end
