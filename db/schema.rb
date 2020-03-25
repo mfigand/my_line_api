@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_211445) do
+ActiveRecord::Schema.define(version: 2020_03_24_221653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 2020_03_24_211445) do
     t.index ["resource"], name: "index_roles_on_resource"
     t.index ["resource_id"], name: "index_roles_on_resource_id"
     t.index ["updated_at"], name: "index_roles_on_updated_at"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "title"
+    t.date "date", null: false
+    t.integer "protagonist_id"
+    t.integer "author_id", null: false
+    t.integer "author_title"
+    t.integer "timeline_id", null: false
+    t.jsonb "tags"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_stories_on_author_id"
+    t.index ["author_title"], name: "index_stories_on_author_title"
+    t.index ["created_at"], name: "index_stories_on_created_at"
+    t.index ["date"], name: "index_stories_on_date"
+    t.index ["description"], name: "index_stories_on_description"
+    t.index ["protagonist_id"], name: "index_stories_on_protagonist_id"
+    t.index ["tags"], name: "index_stories_on_tags", using: :gin
+    t.index ["timeline_id"], name: "index_stories_on_timeline_id"
+    t.index ["updated_at"], name: "index_stories_on_updated_at"
   end
 
   create_table "timelines", force: :cascade do |t|

@@ -30,5 +30,23 @@ hija.roles << admin unless hija.roles.include?(admin)
 
 # TIMELINES
 
-papa.created_timelines.find_or_create_by(title: 'LuciLand', protagonist: hija)
-papa.created_timelines.find_or_create_by(title: 'IvanPasando')
+luciland = papa.created_timelines.find_or_create_by(title: 'LuciLand', protagonist: hija)
+ivanYvienen = papa.created_timelines.find_or_create_by(title: 'IvanYvienen')
+
+
+# STORIES
+
+papa.told_stories.find_or_create_by(title: 'Birhtday',
+                                    date: Date.parse('24-06-2016'),
+                                    protagonist: hija,
+                                    author_title: 'Papá',
+                                    timeline: luciland,
+                                    tags: ['nacimiento', 'cumpleaños', 'dia_cero'],
+                                    description: "Lucía's Birhtday")
+papa.told_stories.find_or_create_by(title: 'Birhtday',
+                                    date: Date.parse('30-04-2018'),
+                                    author_title: 'Papá',
+                                    timeline: ivanYvienen,
+                                    tags: ['cumple', 'cumpleaños', 'birthday'],
+                                    description: "Ivan has arrived")
+
