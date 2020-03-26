@@ -3,14 +3,27 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :users_roles
+  has_many :users_roles, dependent: :destroy
   has_many :roles, through: :users_roles
-  has_many :timelines, class_name: 'Timeline', foreign_key: 'protagonist_id'
-  has_many :created_timelines, class_name: 'Timeline', foreign_key: 'author_id'
-  has_many :stories, class_name: 'Story', foreign_key: 'protagonist_id'
-  has_many :told_stories, class_name: 'Story', foreign_key: 'author_id'
-  has_many :timelines_tellers, foreign_key: 'teller_id'
-  has_many :collaborative_lines, through: :timelines_tellers, source: :timeline
+  has_many :timelines, class_name: 'Timeline',
+                       foreign_key: 'protagonist_id',
+                       inverse_of: :protagonist,
+                       dependent: :nullify
+  has_many :created_timelines, class_name: 'Timeline',
+                               foreign_key: 'author_id',
+                               inverse_of: :author
+  has_many :stories, class_name: 'Story',
+                     foreign_key: 'protagonist_id',
+                     inverse_of: :protagonist,
+                     dependent: :nullify
+  has_many :told_stories, class_name: 'Story',
+                          foreign_key: 'author_id',
+                          inverse_of: :author
+  has_many :timelines_tellers, foreign_key: 'teller_id',
+                               inverse_of: :teller,
+                               dependent: :destroy
+  has_many :collaborative_lines, through: :timelines_tellers,
+                                 source: :timeline
 
   validates :name, :lastname, length: { maximum: 250 }
   validates :email, presence: true, uniqueness: true
