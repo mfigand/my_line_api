@@ -9,7 +9,7 @@ module V1
 
       def destroy
         @user.destroy!
-        nil
+        @user
       rescue ActiveRecord::RecordNotDestroyed => e
         { error: e.message }
       end

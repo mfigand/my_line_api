@@ -11,8 +11,9 @@ module V1
       def destroy
         return ErrorService.new(user[:error], :not_found).create unless user.instance_of?(User)
         return ApplicationPolicy.unauthorized_error unless allowed?
+        return ErrorService.new(updated_user[:error], :unprocessable_entity).create unless deleted_user.instance_of?(User)
 
-        { data: ::V1::Users::DestroyRepository.new(user).destroy, status: :no_content }
+        { data: '', status: :no_content }
       end
 
       private
@@ -23,6 +24,10 @@ module V1
 
       def user
         @user ||= ::V1::Users::FindRepository.new({ id: @id }).find
+      end
+
+      def deleted_user
+        @deleted_user ||= ::V1::Users::DestroyRepository.new(user).destroy
       end
     end
   end

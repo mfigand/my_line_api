@@ -12,7 +12,7 @@ module V1
       def update
         return ErrorService.new(user[:error], :not_found).create unless user.instance_of?(User)
         return ApplicationPolicy.unauthorized_error unless allowed?
-        return ErrorService.new(updated_user[:error], :unprocessable_entity).create unless updated_user
+        return ErrorService.new(updated_user[:error], :unprocessable_entity).create unless updated_user.instance_of?(User)
 
         { data: ::V1::Users::ShowPresenter.new(updated_user).serialize, status: 200 }
       end
@@ -20,7 +20,7 @@ module V1
       private
 
       def allowed?
-        UserPolicy.new(@current_user, user).show?
+        UserPolicy.new(@current_user, user).update?
       end
 
       def user

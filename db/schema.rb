@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(version: 2020_03_25_074157) do
     t.string "lastname"
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["created_at"], name: "index_users_on_created_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email"
     t.index ["lastname"], name: "index_users_on_lastname"
     t.index ["name"], name: "index_users_on_name"
