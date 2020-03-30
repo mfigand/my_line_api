@@ -15,8 +15,8 @@ From root:
 Build the image
 * ./run.sh build
 
-Create the database (./run.sh db help)
-* ./run.sh db create
+Prepare the database (./run.sh db help)
+* ./run.sh db prepare
 
 Boot the app (./run.sh dev help)
 * ./run.sh dev server

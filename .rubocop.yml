@@ -1,13 +1,12 @@
 require: rubocop-rails
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - db/migrate/*
-    - db/seeds.rb
-    - spec/spec_helper.rb
-    - spec/rails_helper.rb
-    - Gemfile
-    - bin/*
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/Documentation:
+  Enabled: false
 Rails:
   Enabled: true
 Rails/FilePath:
@@ -16,19 +15,10 @@ Rails/FilePath:
 Rails/HasManyOrHasOneDependent:
   Exclude:
     - app/models/user.rb
-Style/Documentation:
-    Enabled: false
 Layout/LineLength:
   Max: 120
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
-Style/HashEachMethods:
-  Enabled: true
-Style/HashTransformKeys:
-  Enabled: true
-Style/HashTransformValues:
-  Enabled: true
 Metrics/AbcSize:
-  Max: 17
-
+  Max: 18

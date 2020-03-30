@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTimelinesTellers < ActiveRecord::Migration[6.0]
   def change
     create_table :timelines_tellers do |t|
@@ -7,7 +9,7 @@ class CreateTimelinesTellers < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :timelines_tellers, [:timeline_id, :teller_id], :unique => true
+    add_index :timelines_tellers, %i[timeline_id teller_id], unique: true
     add_index :timelines_tellers, :created_at
     add_index :timelines_tellers, :updated_at
   end

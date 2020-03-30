@@ -10,9 +10,10 @@ function print_help {
   commands:
   - create: run rails db:create
   - setup: run db:create db:schema:load db:seed
+  - prepare: run db:prepare
   - migrate: run rails db:migrate
   - seed: run rails db:seed
-  - no_command: run rails db:setup
+  - no_command: run rails db:prepare
 HELP
 }
 

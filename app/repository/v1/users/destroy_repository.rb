@@ -8,10 +8,7 @@ module V1
       end
 
       def destroy
-        @user.destroy!
-        @user
-      rescue ActiveRecord::RecordNotDestroyed => e
-        { error: e.message }
+        @user.soft_delete
       end
     end
   end

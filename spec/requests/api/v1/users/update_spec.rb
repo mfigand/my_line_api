@@ -31,7 +31,7 @@ RSpec.describe 'update user requests' do
       end
     end
 
-    context 'cannot update' do
+    context 'valid token but not allow to update' do
       let(:id) { user_not_allow_to_update.id }
 
       it 'unauthorized user' do
@@ -40,7 +40,7 @@ RSpec.describe 'update user requests' do
     end
 
     context 'cannot update' do
-      let(:update_params) do        
+      let(:update_params) do
         { id: user.id, name: name_to_update, password: '123' }
       end
 

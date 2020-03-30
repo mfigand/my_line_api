@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable all
 class CreateStories < ActiveRecord::Migration[6.0]
   def change
     create_table :stories do |t|
@@ -18,3 +21,4 @@ class CreateStories < ActiveRecord::Migration[6.0]
     add_index :stories, :updated_at
   end
 end
+# rubocop:enable all

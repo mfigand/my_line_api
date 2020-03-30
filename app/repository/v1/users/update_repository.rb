@@ -11,7 +11,7 @@ module V1
       def update
         @user.update!(@update_attributes)
         @user
-      rescue ActiveRecord::RecordInvalid => e        
+      rescue ActiveRecord::RecordInvalid => e
         { error: e.message }
       end
     end
