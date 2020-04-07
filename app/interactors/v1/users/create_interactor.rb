@@ -3,9 +3,11 @@
 module V1
   module Users
     class CreateInteractor
-      def initialize(email, password)
-        @email = email
-        @password = password
+      def initialize(create_params)
+        @name = create_params[:name]
+        @lastname = create_params[:lastname]
+        @email = create_params[:email]
+        @password = create_params[:password]
       end
 
       def create
@@ -19,7 +21,7 @@ module V1
       private
 
       def user
-        @user ||= ::V1::Users::CreateRepository.new(@email, @password).create
+        @user ||= ::V1::Users::CreateRepository.new(instance_values).create
       end
     end
   end

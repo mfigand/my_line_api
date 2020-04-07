@@ -6,10 +6,12 @@ RSpec.describe 'create user requests' do
   describe 'POST /api/v1/users' do
     subject(:endpoint_call) { post '/api/v1/users', params: params }
 
+    let(:name) { 'Manuel' }
+    let(:lastname) { 'Figueroa' }
     let(:email) { generate(:email) }
     let(:password) { '12345678' }
     let(:params) do
-      { email: email, password: password }
+      { name: name, lastname: lastname, email: email, password: password }
     end
     let(:data_response) { JSON.parse(response.body)['data'] }
 

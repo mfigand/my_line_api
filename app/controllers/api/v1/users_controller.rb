@@ -7,8 +7,7 @@ module Api
       before_action :validate_schema
 
       def create
-        created = ::V1::Users::CreateInteractor.new(save_params[:email],
-                                                    save_params[:password]).create
+        created = ::V1::Users::CreateInteractor.new(save_params).create
         json_response(created)
       end
 
