@@ -37,8 +37,8 @@ hija.roles << admin unless hija.roles.include?(admin)
 
 # TIMELINES
 
-luciland = papa.created_timelines.find_or_create_by(title: 'LuciLand', protagonist: hija)
-ivanyvienen = papa.created_timelines.find_or_create_by(title: 'Ivanyvienen')
+luciland = papa.timelines.find_or_create_by(title: 'LuciLand', protagonist: hija)
+ivanyvienen = papa.timelines.find_or_create_by(title: 'Ivanyvienen')
 
 # STORIES
 

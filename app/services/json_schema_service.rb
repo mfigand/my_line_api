@@ -21,7 +21,7 @@ class JsonSchemaService
   end
 
   def json_path
-    Rails.root.join('app', 'controllers', 'api', 'v1', 'schemas', 'users', "#{json_name}.json").to_s
+    Rails.root.join('app', 'controllers', 'api', 'v1', 'schemas', "#{@controller}", "#{json_name}.json").to_s
   end
 
   def json_name

@@ -20,3 +20,4 @@ detectors:
   FeatureEnvy:
     exclude:
       - Api::V1::UsersController#json_response
+      - Api::V1::TimelinesController#json_response

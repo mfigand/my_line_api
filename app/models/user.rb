@@ -10,7 +10,7 @@ class User < ApplicationRecord
                        foreign_key: 'protagonist_id',
                        inverse_of: :protagonist,
                        dependent: :nullify
-  has_many :created_timelines, class_name: 'Timeline',
+  has_many :timelines, class_name: 'Timeline',
                                foreign_key: 'author_id',
                                inverse_of: :author
   has_many :stories, class_name: 'Story',

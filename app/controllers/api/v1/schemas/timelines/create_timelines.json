@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "required": ["timeline"],
+  "properties": { "timeline": { "type": "object",
+                                "required": ["author_id"],
+                                "properties": { "author_id": { "type": "string" },
+                                                "protagonist_id": { "type": "string" },
+                                                "title": { "type": "string" } } } }
+}

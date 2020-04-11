@@ -13,7 +13,7 @@ class Timeline < ApplicationRecord
                            inverse_of: :timelines
   belongs_to :author, class_name: 'User',
                       foreign_key: 'author_id',
-                      inverse_of: :created_timelines
+                      inverse_of: :timelines
 
   validates :author_id, presence: true
 end

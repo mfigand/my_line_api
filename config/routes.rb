@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
       post 'authenticate', to: 'authentication#authenticate'
 
-      resources :users
+      resources :users do
+        # resources :timelines
+        resources :timelines
+      end
     end
   end
 end
