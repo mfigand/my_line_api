@@ -6,18 +6,35 @@ module Api
       before_action :authenticate_user
       before_action :validate_schema
 
-      def index; end
+      def author_index
+        index = ::V1::Timelines::AuthorIndexInteractor.new(safe_params).index
+        json_response(index)
+      end
+
+      def protagonist_index
+        index = ::V1::Timelines::ProtagonistIndexInteractor.new(safe_params).index
+        json_response(index)
+      end
 
       def create
         created = ::V1::Timelines::CreateInteractor.new(safe_params).create
         json_response(created)
       end
 
-      def show; end
+      def show
+        shown = ::V1::Timelines::ShowInteractor.new(safe_params).show
+        json_response(shown)
+      end
 
-      def update; end
+      def update
+        updated = ::V1::Timelines::UpdateInteractor.new(update_params).update
+        json_response(updated)
+      end
 
-      def destroy; end
+      def destroy
+        destroyed = ::V1::Timelines::DestroyInteractor.new(safe_params).destroy
+        json_response(destroyed)
+      end
 
       private
 

@@ -9,7 +9,7 @@ module V1
         @title = create_params['title']
       end
 
-      def create        
+      def create
         Timeline.create!(instance_values)
       rescue ActiveRecord::RecordInvalid => e
         { error: e.message }

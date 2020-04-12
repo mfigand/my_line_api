@@ -8,10 +8,17 @@ RSpec.describe 'timelines routing' do
   let(:author) { timeline.author }
 
   it do
-    expect(get: api_v1_user_timelines_path(author))
+    expect(get: api_v1_author_index_path(author))
       .to route_to(controller: controller,
-                   action: 'index',
-                   user_id: author.id.to_s)
+                   action: 'author_index',
+                   author_id: author.id.to_s)
+  end
+
+  it do
+    expect(get: api_v1_protagonist_index_path(author))
+      .to route_to(controller: controller,
+                   action: 'protagonist_index',
+                   protagonist_id: author.id.to_s)
   end
 
   it do

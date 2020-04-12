@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
       post 'authenticate', to: 'authentication#authenticate'
 
+      get 'users/:author_id/author_index', to: 'timelines#author_index', as: 'author_index'
+      get 'users/:protagonist_id/protagonist_index', to: 'timelines#protagonist_index', as: 'protagonist_index'
+
       resources :users do
-        # resources :timelines
-        resources :timelines
+        resources :timelines, only: %i[create show update destroy]
       end
     end
   end
