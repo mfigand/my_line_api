@@ -2,7 +2,7 @@
 
 class TimelinePolicy < ApplicationPolicy
   def show?
-    default_policies
+    default_policies || teller
   end
 
   def update?
@@ -10,13 +10,17 @@ class TimelinePolicy < ApplicationPolicy
   end
 
   def destroy?
-    # only permit author or protagonist record
     default_policies
   end
 
   private
 
   def default_policies
+    # only permit author or protagonist timeline
     record.author == user || record.protagonist == user
+  end
+
+  def teller
+    user.roles.find_by(name: 'teller', resource: record.class.name, resource_id: record.id)
   end
 end

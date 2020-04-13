@@ -14,7 +14,7 @@ module V1
       private
 
       def serialized_timeline
-        @timeline.slice(:id, :author_id, :protagonist_id, :title, :created_at, :updated_at)
+        @timeline.slice(:id, :title, :author_id, :protagonist_id, :created_at, :updated_at)
       end
     end
   end

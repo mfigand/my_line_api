@@ -7,12 +7,12 @@ module Api
       before_action :validate_schema
 
       def author_index
-        index = ::V1::Timelines::AuthorIndexInteractor.new(safe_params).index
+        index = ::V1::Timelines::AuthorIndexInteractor.new(current_user).index
         json_response(index)
       end
 
       def protagonist_index
-        index = ::V1::Timelines::ProtagonistIndexInteractor.new(safe_params).index
+        index = ::V1::Timelines::ProtagonistIndexInteractor.new(current_user).index
         json_response(index)
       end
 
@@ -22,12 +22,14 @@ module Api
       end
 
       def show
-        shown = ::V1::Timelines::ShowInteractor.new(safe_params).show
+        shown = ::V1::Timelines::ShowInteractor.new(current_user,
+                                                    safe_params[:id]).show
         json_response(shown)
       end
 
       def update
-        updated = ::V1::Timelines::UpdateInteractor.new(update_params).update
+        updated = ::V1::Timelines::UpdateInteractor.new(current_user,
+                                                        safe_params).update
         json_response(updated)
       end
 
@@ -45,12 +47,6 @@ module Api
 
       def safe_params
         params.permit(:id, :author_id, :protagonist_id, :title, :user_id)
-      end
-
-      def update_params
-        to_update = safe_params.to_hash
-        to_update.delete('id')
-        to_update
       end
 
       def validate_schema
