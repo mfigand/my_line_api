@@ -32,7 +32,8 @@ module Api
       end
 
       def destroy
-        destroyed = ::V1::Timelines::DestroyInteractor.new(safe_params).destroy
+        destroyed = ::V1::Timelines::DestroyInteractor.new(current_user,
+                                                           safe_params[:id]).destroy
         json_response(destroyed)
       end
 
@@ -43,7 +44,7 @@ module Api
       end
 
       def safe_params
-        params.permit(:id, :author_id, :protagonist_id, :title)
+        params.permit(:id, :author_id, :protagonist_id, :title, :user_id)
       end
 
       def update_params
