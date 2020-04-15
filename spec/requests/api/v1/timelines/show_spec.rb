@@ -19,13 +19,6 @@ RSpec.describe 'show timeline requests' do
     end
     let(:user_id) { author.id }
     let(:auth_token) { JsonWebToken.encode(user_id: author.id) }
-    let(:teller) do
-      teller = create(:user)
-      teller.roles.create(name: 'teller',
-                          resource: 'Timeline',
-                          resource_id: timeline.id)
-      teller
-    end
     let(:data_response) { JSON.parse(response.body)['data'] }
 
     before { subject }
@@ -52,6 +45,13 @@ RSpec.describe 'show timeline requests' do
     end
 
     context 'valid show with teller' do
+      let(:teller) do
+        teller = create(:user)
+        teller.roles.create(name: 'teller',
+                            resource: 'Timeline',
+                            resource_id: timeline.id)
+        teller
+      end
       let(:user_id) { teller.id }
       let(:auth_token) { JsonWebToken.encode(user_id: teller.id) }
 

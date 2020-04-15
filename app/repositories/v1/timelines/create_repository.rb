@@ -4,9 +4,9 @@ module V1
   module Timelines
     class CreateRepository
       def initialize(create_params)
+        @title = create_params['title']
         @author_id = create_params['author_id']
         @protagonist_id = create_params['protagonist_id']
-        @title = create_params['title']
       end
 
       def create
