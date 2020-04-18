@@ -11,5 +11,5 @@ class Story < ApplicationRecord
                       foreign_key: 'author_id',
                       inverse_of: :told_stories
 
-  validates :author_id, presence: true
+  validates :author_id, :date, :timeline_id, presence: true
 end

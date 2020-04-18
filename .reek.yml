@@ -21,3 +21,4 @@ detectors:
     exclude:
       - Api::V1::UsersController#json_response
       - Api::V1::TimelinesController#json_response
+      - Api::V1::StoriesController#json_response

@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": ["story"],
+  "properties": { "story": { "type": "object",
+                                "required": ["author_id", "date", "timeline_id"],
+                                "properties": { "author_id": { "type": "string" },
+                                                "title": { "type": "string" },
+                                                "date": { "type": "string" },
+                                                "protagonist_id": { "type": "string" },
+                                                "author_title": { "type": "string" },
+                                                "timeline_id": { "type": "string" },
+                                                "tags": { "type": "string" },
+                                                "description": { "type": "string" } } } }
+}
