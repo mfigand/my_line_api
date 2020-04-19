@@ -34,11 +34,11 @@ module Api
         json_response(updated)
       end
 
-      # def destroy
-      #   destroyed = ::V1::Stories::DestroyInteractor.new(current_user,
-      #                                                       safe_params[:id]).destroy
-      #   json_response(destroyed)
-      # end
+      def destroy
+        destroyed = ::V1::Stories::DestroyInteractor.new(current_user,
+                                                         safe_params[:id]).destroy
+        json_response(destroyed)
+      end
 
       private
 
