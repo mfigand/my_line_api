@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Timeline < ApplicationRecord
-  has_many :stories, dependent: :destroy
+  has_many :stories, dependent: :restrict_with_exception
   has_many :timelines_tellers, foreign_key: 'timeline_id',
                                inverse_of: :timeline,
                                dependent: :destroy

@@ -10,8 +10,6 @@ module V1
       def destroy
         @story.destroy!
         true
-      rescue ActiveRecord::RecordInvalid => e
-        { error: e.message }
       end
     end
   end

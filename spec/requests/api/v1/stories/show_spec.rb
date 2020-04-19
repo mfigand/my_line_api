@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'show story requests' do
   describe 'GET /api/v1/users/:user_id/stories/:id' do
     subject(:endpoint_call) do
-      get "/api/v1/users/#{user_id}/stories/#{story.id}",
+      get "/api/v1/users/#{user_id}/stories/#{story_id}",
           headers: { 'Authentication' => auth_token }
     end
 
@@ -18,6 +18,7 @@ RSpec.describe 'show story requests' do
       teller
     end
     let(:story) { create(:story, teller_id: teller.id, timeline_id: timeline.id) }
+    let(:story_id) { story.id }
     let(:user_id) { teller.id }
     let(:auth_token) { JsonWebToken.encode(user_id: teller.id) }
     let(:data_response) { JSON.parse(response.body)['data'] }
@@ -78,6 +79,14 @@ RSpec.describe 'show story requests' do
 
       it do
         expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    context 'cant find story' do
+      let(:story_id) { '0' }
+
+      it do
+        expect(response).to have_http_status(:not_found)
       end
     end
 

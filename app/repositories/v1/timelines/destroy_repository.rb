@@ -10,7 +10,7 @@ module V1
       def destroy
         @timeline.destroy!
         true
-      rescue ActiveRecord::RecordInvalid => e
+      rescue ActiveRecord::DeleteRestrictionError => e
         { error: e.message }
       end
     end
