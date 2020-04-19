@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: ruby:2.6.5
+      image: ruby:2.6.6
     
     services:
       postgres:
@@ -29,10 +29,10 @@ jobs:
     steps:
     - name: Check out Git repository
       uses: actions/checkout@v2
-    - name: Set up Ruby 2.6.5
+    - name: Set up Ruby 2.6.6
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.5
+        ruby-version: 2.6.6
     - name: Save cache in vendor
       uses: actions/cache@v1
       with:
