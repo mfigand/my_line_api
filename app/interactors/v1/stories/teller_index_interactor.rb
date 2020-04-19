@@ -2,9 +2,9 @@
 
 module V1
   module Stories
-    class AuthorIndexInteractor
-      def initialize(author)
-        @author = author
+    class TellerIndexInteractor
+      def initialize(teller)
+        @teller = teller
       end
 
       def index
@@ -14,7 +14,7 @@ module V1
       private
 
       def stories
-        @stories ||= ::V1::Stories::AuthorIndexRepository.new(@author).index
+        @stories ||= ::V1::Stories::TellerIndexRepository.new(@teller).index
       end
     end
   end

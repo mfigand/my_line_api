@@ -45,13 +45,13 @@ ivanyvienen = papa.created_timelines.find_or_create_by(title: 'Ivanyvienen')
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('24-06-2016'),
                                     protagonist: hija,
-                                    author_title: 'Papá',
+                                    teller_title: 'Papá',
                                     timeline: luciland,
                                     tags: %W[nacimiento cumplea\u00F1os dia_cero],
                                     description: "Lucía's Birhtday")
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('30-04-2018'),
-                                    author_title: 'Papá',
+                                    teller_title: 'Papá',
                                     timeline: ivanyvienen,
                                     tags: %W[cumple cumplea\u00F1os birthday],
                                     description: 'Ivan has arrived')
@@ -62,5 +62,5 @@ papa.told_stories.find_or_create_by(title: 'Birhtday',
 luciland.tellers << mama unless luciland.tellers.include?(mama)
 ivanyvienen.tellers << mama unless luciland.tellers.include?(mama)
 # From teller
-papa.collaborative_lines << luciland unless papa.collaborative_lines.include?(luciland)
-papa.collaborative_lines << ivanyvienen unless papa.collaborative_lines.include?(ivanyvienen)
+papa.lines_as_teller << luciland unless papa.lines_as_teller.include?(luciland)
+papa.lines_as_teller << ivanyvienen unless papa.lines_as_teller.include?(ivanyvienen)

@@ -18,13 +18,13 @@ class User < ApplicationRecord
                      inverse_of: :protagonist,
                      dependent: :nullify
   has_many :told_stories, class_name: 'Story',
-                          foreign_key: 'author_id',
-                          inverse_of: :author
+                          foreign_key: 'teller_id',
+                          inverse_of: :teller
   has_many :timelines_tellers, foreign_key: 'teller_id',
                                inverse_of: :teller,
                                dependent: :destroy
-  has_many :collaborative_lines, through: :timelines_tellers,
-                                 source: :timeline
+  has_many :lines_as_teller, through: :timelines_tellers,
+                             source: :timeline
 
   validates :name, :lastname, length: { maximum: 250 }
   validates :email, presence: true, uniqueness: true

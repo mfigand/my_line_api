@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       get 'users/:protagonist_id/timelines/protagonist_index', to: 'timelines#protagonist_index',
                                                                as: 'timelines_protagonist_index'
 
-      get 'users/:author_id/stories/author_index', to: 'stories#author_index',
-                                                   as: 'stories_author_index'
+      get 'users/:teller_id/stories/teller_index', to: 'stories#teller_index',
+                                                   as: 'stories_teller_index'
       get 'users/:protagonist_id/stories/protagonist_index', to: 'stories#protagonist_index',
                                                              as: 'stories_protagonist_index'
 

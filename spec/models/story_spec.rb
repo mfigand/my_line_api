@@ -14,8 +14,8 @@ RSpec.describe Story, type: :model do
       expect(build(:story, protagonist: nil)).to be_valid
     end
 
-    it 'Invalidwithout author' do
-      expect(build(:story, author: nil)).not_to be_valid
+    it 'Invalidwithout teller' do
+      expect(build(:story, teller: nil)).not_to be_valid
     end
   end
 end

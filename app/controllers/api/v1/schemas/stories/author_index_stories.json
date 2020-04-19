@@ -1,7 +1,0 @@
-{
-  "type": "object",
-  "required": ["story"],
-  "properties": { "story": { "type": "object",
-                                "required": ["author_id"],
-                                "properties": { "author_id": { "type": "string" } } } }
-}

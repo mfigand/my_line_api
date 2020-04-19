@@ -10,13 +10,12 @@ RSpec.describe 'protagonist index requests' do
     end
 
     let(:protagonist) { create(:user) }
+    let(:timeline) { create(:timeline, protagonist_id: protagonist.id) }
     let(:auth_token) { JsonWebToken.encode(user_id: protagonist.id) }
-    let(:timeline) { protagonist.created_timelines.create(title: 'Timeline') }
     let(:stories) do
       5.times do |index|
         protagonist.told_stories.create(date: Time.now.utc - index.days,
-                                        timeline: timeline,
-                                        protagonist: protagonist)
+                                        timeline: timeline)
       end
     end
     let(:data_response) { JSON.parse(response.body)['data'] }

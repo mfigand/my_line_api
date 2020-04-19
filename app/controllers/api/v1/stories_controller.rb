@@ -6,8 +6,8 @@ module Api
       before_action :authenticate_user
       before_action :validate_schema
 
-      def author_index
-        index = ::V1::Stories::AuthorIndexInteractor.new(current_user).index
+      def teller_index
+        index = ::V1::Stories::TellerIndexInteractor.new(current_user).index
         json_response(index)
       end
 
@@ -16,10 +16,11 @@ module Api
         json_response(index)
       end
 
-      # def create
-      #   created = ::V1::Stories::CreateInteractor.new(safe_params).create
-      #   json_response(created)
-      # end
+      def create
+        created = ::V1::Stories::CreateInteractor.new(current_user,
+                                                      safe_params).create
+        json_response(created)
+      end
 
       # def show
       #   shown = ::V1::Stories::ShowInteractor.new(current_user,
@@ -46,7 +47,8 @@ module Api
       end
 
       def safe_params
-        params.permit(:id, :author_id, :protagonist_id, :title, :user_id)
+        params.permit(:id, :protagonist_id, :teller_id, :user_id, :title,
+                      :date, :teller_title, :timeline_id, :tags, :description)
       end
 
       def validate_schema

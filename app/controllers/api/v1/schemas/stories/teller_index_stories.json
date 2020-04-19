@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "required": ["story"],
+  "properties": { "story": { "type": "object",
+                                "required": ["teller_id"],
+                                "properties": { "teller_id": { "type": "string" } } } }
+}

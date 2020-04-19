@@ -7,8 +7,8 @@ class CreateStories < ActiveRecord::Migration[6.0]
       t.string :title
       t.date :date, null: false, index: true
       t.integer :protagonist_id, index: true
-      t.integer :author_id, null: false, index: true
-      t.integer :author_title, index: true
+      t.integer :teller_id, null: false, index: true
+      t.integer :teller_title, index: true
       t.integer :timeline_id, null: false, index: true
       t.jsonb :tags
       t.string :description, index: true
