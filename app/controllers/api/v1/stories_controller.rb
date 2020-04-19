@@ -28,11 +28,11 @@ module Api
         json_response(shown)
       end
 
-      # def update
-      #   updated = ::V1::Stories::UpdateInteractor.new(current_user,
-      #                                                   safe_params).update
-      #   json_response(updated)
-      # end
+      def update
+        updated = ::V1::Stories::UpdateInteractor.new(current_user,
+                                                      safe_params).update
+        json_response(updated)
+      end
 
       # def destroy
       #   destroyed = ::V1::Stories::DestroyInteractor.new(current_user,

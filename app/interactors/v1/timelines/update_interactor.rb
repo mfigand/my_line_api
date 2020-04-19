@@ -32,7 +32,8 @@ module V1
       end
 
       def allowed_params
-        params = { timeline: timeline, title: @title, protagonist_id: @protagonist_id }
+        params = { timeline: timeline, title: @title || timeline.title,
+                   protagonist_id: @protagonist_id || timeline.protagonist_id }
         params[:protagonist_id] = @current_user.id if @current_user == timeline.protagonist
         params
       end
