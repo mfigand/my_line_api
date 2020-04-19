@@ -22,11 +22,11 @@ module Api
         json_response(created)
       end
 
-      # def show
-      #   shown = ::V1::Stories::ShowInteractor.new(current_user,
-      #                                               safe_params[:id]).show
-      #   json_response(shown)
-      # end
+      def show
+        shown = ::V1::Stories::ShowInteractor.new(current_user,
+                                                  safe_params[:id]).show
+        json_response(shown)
+      end
 
       # def update
       #   updated = ::V1::Stories::UpdateInteractor.new(current_user,

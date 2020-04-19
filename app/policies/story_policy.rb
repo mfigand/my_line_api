@@ -2,11 +2,11 @@
 
 class StoryPolicy < ApplicationPolicy
   def create?
-    teller
+    teller_role || record.protagonist == user || record.author == user
   end
 
   def show?
-    default_policies || teller
+    default_policies || record.timeline.author == user
   end
 
   def update?
@@ -21,10 +21,10 @@ class StoryPolicy < ApplicationPolicy
 
   def default_policies
     # only permit teller or protagonist timeline
-    record.teller == user || record.protagonist == user
+    record.teller == user || record.timeline.protagonist == user
   end
 
-  def teller
+  def teller_role
     user.roles.find_by(name: 'teller', resource: record.class.name, resource_id: record.id).present?
   end
 end
