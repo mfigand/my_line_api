@@ -3,7 +3,7 @@
 class CreateTimelines < ActiveRecord::Migration[6.0]
   def change
     create_table :timelines do |t|
-      t.string :title, index: true
+      t.string :title, null: false, index: true
       t.integer :protagonist_id, index: true
       t.integer :author_id, null: false, index: true
 

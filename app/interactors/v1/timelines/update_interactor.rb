@@ -14,7 +14,7 @@ module V1
         return ErrorService.new(timeline[:error], :not_found).create unless timeline.instance_of?(Timeline)
         return ApplicationPolicy.unauthorized_error unless allowed?
 
-        if updated_timeline
+        if updated_timeline.instance_of?(Timeline)
           { data: ::V1::Timelines::ShowPresenter.new(updated_timeline).serialize, status: 200 }
         else
           { data: "Error: #{updated_timeline[:error]}", status: :unprocessable_entity }

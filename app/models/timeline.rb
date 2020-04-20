@@ -15,5 +15,5 @@ class Timeline < ApplicationRecord
                       foreign_key: 'author_id',
                       inverse_of: :created_timelines
 
-  validates :author_id, presence: true
+  validates :author_id, :title, presence: true
 end

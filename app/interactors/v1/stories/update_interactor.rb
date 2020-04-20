@@ -17,7 +17,7 @@ module V1
         return ErrorService.new(story[:error], :not_found).create unless story.instance_of?(Story)
         return ApplicationPolicy.unauthorized_error unless allowed?
 
-        if updated_story
+        if updated_story.instance_of?(Story)
           { data: ::V1::Stories::ShowPresenter.new(updated_story).serialize, status: 200 }
         else
           { data: "Error: #{updated_story[:error]}", status: :unprocessable_entity }

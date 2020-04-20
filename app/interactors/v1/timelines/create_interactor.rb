@@ -10,7 +10,7 @@ module V1
       end
 
       def create
-        if timeline
+        if timeline.instance_of?(Timeline)
           { data: ::V1::Timelines::ShowPresenter.new(timeline).serialize, status: 200 }
         else
           { data: "Error: #{timeline[:error]}", status: :unprocessable_entity }
