@@ -11,11 +11,11 @@ module Api
         json_response(index)
       end
 
-      # def create
-      #   created = ::V1::Roles::CreateInteractor.new(current_user,
-      #                                               safe_params).create
-      #   json_response(created)
-      # end
+      def create
+        created = ::V1::Roles::CreateInteractor.new(current_user,
+                                                    safe_params).create
+        json_response(created)
+      end
 
       # def show
       #   shown = ::V1::Roles::ShowInteractor.new(current_user,
@@ -42,8 +42,7 @@ module Api
       end
 
       def safe_params
-        params.permit(:id, :protagonist_id, :teller_id, :user_id, :title,
-                      :date, :teller_title, :timeline_id, :tags, :description)
+        params.permit(:id, :user_id, :name, :resource, :resource_id)
       end
 
       def validate_schema

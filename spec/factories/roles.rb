@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :role do
-    name { 'Teller' }
+    name { 'teller' }
     resource { 'Timeline' }
     resource_id { 0 }
   end
