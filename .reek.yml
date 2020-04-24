@@ -22,5 +22,6 @@ detectors:
       - Api::V1::UsersController#json_response
       - Api::V1::TimelinesController#json_response
       - Api::V1::StoriesController#json_response
+      - Api::V1::RolesController#json_response
   TooManyInstanceVariables:
     max_instance_variables: 7

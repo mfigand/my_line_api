@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :users do
         resources :timelines, only: %i[create show update destroy]
         resources :stories, only: %i[create show update destroy]
+        resources :roles
       end
     end
   end

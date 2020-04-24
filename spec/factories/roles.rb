@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :role do
-    name { 'My Role' }
-    resource { 'some_resource' }
-    resource_id { 1 }
+    name { 'teller' }
+    resource { 'Timeline' }
+    resource_id { 0 }
   end
 end

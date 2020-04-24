@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "required": ["role"],
+  "properties": { "role": { "type": "object",
+                                "required": ["name"],
+                                "properties": { "name": { "type": "string" },
+                                                "resource": { "type": "string" },
+                                                "resource_id": { "type": "string" } } } }
+}
