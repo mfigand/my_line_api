@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_074157) do
   enable_extension "plpgsql"
 
   create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "resource"
+    t.integer "name", null: false
+    t.integer "resource"
     t.integer "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_074157) do
   end
 
   create_table "timelines", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.integer "protagonist_id"
     t.integer "author_id", null: false
     t.datetime "created_at", precision: 6, null: false

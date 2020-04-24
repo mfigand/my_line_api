@@ -45,13 +45,13 @@ ivanyvienen = papa.created_timelines.find_or_create_by(title: 'Ivanyvienen')
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('24-06-2016'),
                                     protagonist: hija,
-                                    teller_title: 'Papá',
+                                    teller_title: 'Dad',
                                     timeline: luciland,
                                     tags: %W[nacimiento cumplea\u00F1os dia_cero],
                                     description: "Lucía's Birhtday")
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('30-04-2018'),
-                                    teller_title: 'Papá',
+                                    teller_title: 'Dad',
                                     timeline: ivanyvienen,
                                     tags: %W[cumple cumplea\u00F1os birthday],
                                     description: 'Ivan has arrived')

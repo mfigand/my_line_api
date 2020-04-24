@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Story < ApplicationRecord
-  enum teller_title: { Dad: 0, Mom: 1, Bro: 2, Sis: 3, Grandpa: 4, Grandma: 5,
-                       Uncle: 6, Cousin: 7, Nephew: 8, Grandchild: 9, Friend: 10 }
+  enum teller_title: { Dad: 1, Mom: 2, Bro: 3, Sis: 4, Grandpa: 5, Grandma: 6,
+                       Uncle: 7, Cousin: 8, Nephew: 9, Grandchild: 10, Friend: 11 }
 
   belongs_to :timeline
 
