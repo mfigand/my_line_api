@@ -15,7 +15,7 @@ module V1
 
       def create
         Story.create!(instance_values)
-      rescue ActiveRecord::RecordInvalid => e
+      rescue ActiveRecord::RecordInvalid, ArgumentError => e
         { error: e.message }
       end
     end

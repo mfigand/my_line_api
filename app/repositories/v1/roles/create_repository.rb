@@ -11,7 +11,7 @@ module V1
 
       def create
         Role.create!(instance_values)
-      rescue ActiveRecord::RecordInvalid => e
+      rescue ActiveRecord::RecordInvalid, ArgumentError => e
         { error: e.message }
       end
     end

@@ -9,10 +9,6 @@ class RolePolicy < ApplicationPolicy
     default_policies
   end
 
-  def update?
-    default_policies
-  end
-
   def destroy?
     default_policies
   end

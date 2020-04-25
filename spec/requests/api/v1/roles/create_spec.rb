@@ -10,11 +10,6 @@ RSpec.describe 'create role requests' do
            headers: { 'Authentication' => auth_token }
     end
 
-    # let(:superadmin) do
-    #   superadmin = create(:user)
-    #   superadmin.roles.create(name: 'superadmin')
-    #   superadmin
-    # end
     let(:user) { create(:user) }
     let(:protagonist) { create(:user) }
     let(:timeline) { user.created_timelines.create(title: 'Timeline', protagonist: protagonist) }
