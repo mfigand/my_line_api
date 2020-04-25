@@ -23,17 +23,11 @@ module Api
         json_response(shown)
       end
 
-      # def update
-      #   updated = ::V1::Roles::UpdateInteractor.new(current_user,
-      #                                               safe_params).update
-      #   json_response(updated)
-      # end
-
-      # def destroy
-      #   destroyed = ::V1::Roles::DestroyInteractor.new(current_user,
-      #                                                  safe_params[:id]).destroy
-      #   json_response(destroyed)
-      # end
+      def destroy
+        destroyed = ::V1::Roles::DestroyInteractor.new(current_user,
+                                                       safe_params[:id]).destroy
+        json_response(destroyed)
+      end
 
       private
 
