@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "required": ["role"],
+  "properties": { "role": { "type": "object",
+                                "required": ["user_id", "id"],
+                                "properties": { "user_id": { "type": "string" },
+                                                "id": { "type": "string" } } } }
+}

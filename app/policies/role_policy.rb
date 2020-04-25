@@ -21,6 +21,18 @@ class RolePolicy < ApplicationPolicy
 
   def default_policies
     # only permit author or protagonist timeline
-    record.author == user || record.protagonist == user
+    author == user || protagonist == user
+  end
+
+  def timeline
+    @timeline ||= ::V1::Timelines::FindRepository.new(record.resource_id).find
+  end
+
+  def author
+    record.instance_of?(Timeline) ? record.author : timeline.author
+  end
+
+  def protagonist
+    record.instance_of?(Timeline) ? record.protagonist : timeline.protagonist
   end
 end

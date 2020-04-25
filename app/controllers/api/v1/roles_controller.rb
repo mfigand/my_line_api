@@ -17,11 +17,11 @@ module Api
         json_response(created)
       end
 
-      # def show
-      #   shown = ::V1::Roles::ShowInteractor.new(current_user,
-      #                                           safe_params[:id]).show
-      #   json_response(shown)
-      # end
+      def show
+        shown = ::V1::Roles::ShowInteractor.new(current_user,
+                                                safe_params[:id]).show
+        json_response(shown)
+      end
 
       # def update
       #   updated = ::V1::Roles::UpdateInteractor.new(current_user,
