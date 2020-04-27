@@ -4,6 +4,6 @@
   "properties": { "timeline": { "type": "object",
                                 "required": ["author_id"],
                                 "properties": { "author_id": { "type": "string" },
-                                                "protagonist_id": { "type": "string" },
+                                                "protagonist_email": { "type": "string" },
                                                 "title": { "type": "string" } } } }
 }

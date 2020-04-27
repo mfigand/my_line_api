@@ -16,7 +16,7 @@ RSpec.describe 'create timeline requests' do
     let(:title) { 'timeline_title' }
     let(:params) do
       { author_id: author.id,
-        protagonist_id: protagonist.id,
+        protagonist_email: protagonist.email,
         title: title }
     end
     let(:user_not_allow_to_create) { create(:user) }

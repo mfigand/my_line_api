@@ -5,7 +5,7 @@ module V1
     class CreateInteractor
       def initialize(create_params)
         @author_id = create_params[:author_id]
-        @protagonist_id = create_params[:protagonist_id]
+        @protagonist_email = create_params[:protagonist_email]
         @title = create_params[:title]
       end
 
@@ -20,7 +20,19 @@ module V1
       private
 
       def timeline
-        @timeline ||= ::V1::Timelines::CreateRepository.new(instance_values).create
+        @timeline ||= ::V1::Timelines::CreateRepository.new(create_params).create
+      end
+
+      def protagonist
+        @protagonist ||= ::V1::Users::FindRepository.new({ email: @protagonist_email }).find
+      end
+
+      def create_params
+        if protagonist.instance_of?(User)
+          instance_values.merge('protagonist_id' => protagonist.id)
+        else
+          instance_values
+        end
       end
     end
   end
