@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'create timeline requests' do
-  describe 'POST /api/v1/users/:user_id/timelines' do
+  describe 'POST /api/v1/timelines' do
     subject(:endpoint_call) do
-      post "/api/v1/users/#{author.id}/timelines",
+      post '/api/v1/timelines',
            params: params,
            headers: { 'Authentication' => auth_token }
     end

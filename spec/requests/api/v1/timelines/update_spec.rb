@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'update timeline requests' do
-  describe 'PATCH /api/v1/users/:user_id/timelines/:id' do
+  describe 'PATCH /api/v1/timelines/:id' do
     subject(:endpoint_call) do
-      patch "/api/v1/users/#{user_id}/timelines/#{timeline.id}",
+      patch "/api/v1/timelines/#{timeline.id}",
             params: params,
             headers: { 'Authentication' => auth_token }
     end

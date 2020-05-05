@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'author index requests' do
-  describe 'GET /api/v1/users/:user_id/timelines/author_index' do
+  describe 'GET /api/v1/timelines/author_index' do
     subject(:endpoint_call) do
-      get "/api/v1/users/#{author.id}/timelines/author_index",
+      get '/api/v1/timelines/author_index',
           headers: { 'Authentication' => auth_token }
     end
 

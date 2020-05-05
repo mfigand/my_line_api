@@ -2,7 +2,6 @@
   "type": "object",
   "required": ["timeline"],
   "properties": { "timeline": { "type": "object",
-                                "required": ["user_id", "id"],
-                                "properties": { "user_id": { "type": "string" },
-                                                "id": { "type": "string" } } } }
+                                "required": ["id"],
+                                "properties": { "id": { "type": "string" } } } }
 }

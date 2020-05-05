@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "required": ["story"],
+  "properties": { "story": { "type": "object",
+                                "required": ["timeline_id"],
+                                "properties": { "timeline_id": { "type": "string" } } } }
+}

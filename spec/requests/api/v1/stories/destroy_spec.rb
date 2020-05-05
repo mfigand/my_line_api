@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe 'destroy story requests' do
-  describe 'DELETE /api/v1/users/:user_id/stories/:id' do
+  describe 'DELETE /api/v1/timelines/:timeline_id/stories/:id' do
     subject(:endpoint_call) do
-      delete "/api/v1/users/#{user_id}/stories/#{story.id}",
+      delete "/api/v1/timelines/#{timeline_id}/stories/#{story.id}",
              headers: { 'Authentication' => auth_token }
     end
 
     let(:timeline) { create(:timeline) }
+    let(:timeline_id) { create(:timeline).id }
     let(:teller) do
       teller = create(:user)
       teller.roles.create(name: 'teller',

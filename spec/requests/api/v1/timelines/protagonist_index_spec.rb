@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'protagonist index requests' do
-  describe 'GET /api/v1/users/:user_id/timelines/protagonist_index' do
+  describe 'GET /api/v1/timelines/protagonist_index' do
     subject(:endpoint_call) do
-      get "/api/v1/users/#{protagonist.id}/timelines/protagonist_index",
+      get '/api/v1/timelines/protagonist_index',
           headers: { 'Authentication' => auth_token }
     end
 

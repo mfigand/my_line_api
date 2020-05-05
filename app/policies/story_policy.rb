@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class StoryPolicy < ApplicationPolicy
+  def index?
+    teller_role || record.protagonist == user || record.author == user
+  end
+
   def create?
     teller_role || record.protagonist == user || record.author == user
   end

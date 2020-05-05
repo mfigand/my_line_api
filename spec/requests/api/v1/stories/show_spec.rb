@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe 'show story requests' do
-  describe 'GET /api/v1/users/:user_id/stories/:id' do
+  describe 'GET /api/v1/timelines/:timeline_id/stories/:id' do
     subject(:endpoint_call) do
-      get "/api/v1/users/#{user_id}/stories/#{story_id}",
+      get "/api/v1/timelines/#{timeline_id}/stories/#{story_id}",
           headers: { 'Authentication' => auth_token }
     end
 
     let(:timeline) { create(:timeline) }
+    let(:timeline_id) { timeline.id }
     let(:teller) do
       teller = create(:user)
       teller.roles.create(name: 'teller',

@@ -7,48 +7,42 @@ RSpec.describe 'timelines routing' do
   let(:timeline) { create(:timeline) }
   let(:author) { timeline.author }
 
-  it do
-    expect(get: api_v1_timelines_author_index_path(author))
+  it '#author_index' do
+    expect(get: api_v1_timelines_author_index_path)
       .to route_to(controller: controller,
-                   action: 'author_index',
-                   author_id: author.id.to_s)
+                   action: 'author_index')
   end
 
-  it do
-    expect(get: api_v1_timelines_protagonist_index_path(author))
+  it '#protagonist_index' do
+    expect(get: api_v1_timelines_protagonist_index_path)
       .to route_to(controller: controller,
-                   action: 'protagonist_index',
-                   protagonist_id: author.id.to_s)
+                   action: 'protagonist_index')
   end
 
-  it do
-    expect(post: api_v1_user_timelines_path(author))
+  it '#create' do
+    expect(post: api_v1_timelines_path)
       .to route_to(controller: controller,
-                   action: 'create',
-                   user_id: author.id.to_s)
+                   action: 'create')
   end
 
-  it do
-    expect(get: api_v1_user_timeline_path(author, timeline))
+  it '#show' do
+    expect(get: api_v1_timeline_path(timeline))
       .to route_to(controller: controller,
                    action: 'show',
-                   user_id: author.id.to_s,
                    id: timeline.id.to_s)
   end
 
-  it do
-    expect(patch: api_v1_user_timeline_path(author, timeline))
+  it '#update' do
+    expect(patch: api_v1_timeline_path(timeline))
       .to route_to(controller: controller,
                    action: 'update',
-                   user_id: author.id.to_s,
                    id: timeline.id.to_s)
   end
 
-  it do
-    expect(delete: api_v1_user_timeline_path(author, timeline))
+  it '#destroy' do
+    expect(delete: api_v1_timeline_path(timeline))
       .to route_to(controller: controller,
                    action: 'destroy',
-                   user_id: author.id.to_s,
                    id: timeline.id.to_s)
   end
 end

@@ -16,6 +16,12 @@ module Api
         json_response(index)
       end
 
+      def index
+        index = ::V1::Stories::IndexInteractor.new(current_user,
+                                                   safe_params[:timeline_id]).index
+        json_response(index)
+      end
+
       def create
         created = ::V1::Stories::CreateInteractor.new(current_user,
                                                       safe_params).create

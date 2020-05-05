@@ -14,10 +14,10 @@ module V1
       private
 
       def serialized_stories
-        @stories.map do |timeline|
-          timeline.slice(:id, :title, :date, :protagonist_id, :teller_id,
-                         :teller_title, :timeline_id, :tags, :description,
-                         :created_at, :updated_at)
+        @stories.map do |story|
+          story.slice(:id, :title, :date, :protagonist_id, :teller_id,
+                      :teller_title, :timeline_id, :tags, :description,
+                      :created_at, :updated_at)
         end
       end
     end

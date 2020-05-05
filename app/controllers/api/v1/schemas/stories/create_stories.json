@@ -2,12 +2,11 @@
   "type": "object",
   "required": ["story"],
   "properties": { "story": { "type": "object",
-                                "required": ["user_id", "date", "timeline_id"],
-                                "properties": { "user_id": { "type": "string" },
+                                "required": ["timeline_id", "date"],
+                                "properties": { "timeline_id": { "type": "string" },
                                                 "title": { "type": "string" },
                                                 "date": { "type": "string" },
                                                 "teller_title": { "type": "string" },
-                                                "timeline_id": { "type": "string" },
                                                 "tags": { "type": "string" },
                                                 "description": { "type": "string" } } } }
 }

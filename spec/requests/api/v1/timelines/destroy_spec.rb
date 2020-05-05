@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'destroy timeline requests' do
-  describe 'DELETE /api/v1/users/:user_id/timelines/:id' do
+  describe 'DELETE /api/v1/timelines/:id' do
     subject(:endpoint_call) do
-      delete "/api/v1/users/#{user_id}/timelines/#{timeline.id}",
+      delete "/api/v1/timelines/#{timeline.id}",
              headers: { 'Authentication' => auth_token }
     end
 

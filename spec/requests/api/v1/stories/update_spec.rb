@@ -3,14 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'update story requests' do
-  describe 'PATCH /api/v1/users/:user_id/stories/:id' do
+  describe 'PATCH /api/v1/timelines/:timeline_id/stories/:id' do
     subject(:endpoint_call) do
-      patch "/api/v1/users/#{user_id}/stories/#{story.id}",
+      patch "/api/v1/timelines/#{timeline_id}/stories/#{story.id}",
             params: params,
             headers: { 'Authentication' => auth_token }
     end
 
     let(:timeline) { create(:timeline) }
+    let(:timeline_id) { create(:timeline).id }
     let(:teller) do
       teller = create(:user)
       teller.roles.create(name: 'teller',

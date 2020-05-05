@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'create story requests' do
-  describe 'POST /api/v1/users/:user_id/stories' do
+  describe 'POST /api/v1/timelines/:timeline_id/stories' do
     subject(:endpoint_call) do
-      post "/api/v1/users/#{teller.id}/stories",
+      post "/api/v1/timelines/#{timeline_id}/stories",
            params: params,
            headers: { 'Authentication' => auth_token }
     end
@@ -26,7 +26,6 @@ RSpec.describe 'create story requests' do
       { title: 'Funny story',
         date: Time.now.utc - 5.days,
         teller_title: 'Uncle',
-        timeline_id: timeline_id,
         tags: %w[tag_1 tag_2],
         description: 'Story description' }
     end
