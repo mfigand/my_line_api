@@ -53,8 +53,8 @@ module Api
       end
 
       def safe_params
-        params.permit(:id, :protagonist_id, :teller_id, :user_id, :title,
-                      :date, :teller_title, :timeline_id, :tags, :description)
+        params.permit(:id, :protagonist_id, :teller_id, :user_id, :title, :date,
+                      :teller_title, :timeline_id, :tags, :description, :photo)
       end
 
       def validate_schema

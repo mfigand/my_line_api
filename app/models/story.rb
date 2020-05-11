@@ -3,7 +3,9 @@
 class Story < ApplicationRecord
   enum teller_title: { Dad: 1, Mom: 2, Bro: 3, Sis: 4, Grandpa: 5, Grandma: 6,
                        Uncle: 7, Cousin: 8, Nephew: 9, Grandchild: 10, Friend: 11 }
-
+  
+  has_one_attached :photo
+  
   belongs_to :timeline
 
   belongs_to :protagonist, class_name: 'User',

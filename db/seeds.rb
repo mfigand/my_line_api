@@ -56,6 +56,14 @@ papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     tags: %W[cumple cumplea\u00F1os birthday],
                                     description: 'Ivan has arrived')
 
+# STORIES IMAGES
+file_name = 'firma_figand.jpg'
+file_path = File.join(Rails.root, 'public', 'images', file_name)
+file = File.open(file_path)
+story = Story.last
+story.photo.attach(io: file, filename: file_name)
+# story.photo.attached?
+
 # TIMELINESTELLERS
 
 # From Timeline

@@ -35,7 +35,7 @@ Run reek
 
 Things you may want to cover:
 
-* Ruby version ruby-2.6.5
+* Ruby version ruby-2.6.6
 
 * System dependencies
   - docker
