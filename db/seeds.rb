@@ -41,34 +41,39 @@ luciland = papa.created_timelines.find_or_create_by(title: 'LuciLand', protagoni
 ivanyvienen = papa.created_timelines.find_or_create_by(title: 'Ivanyvienen')
 
 # STORIES
-
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('24-06-2016'),
                                     protagonist: hija,
                                     teller_title: 'Dad',
                                     timeline: luciland,
-                                    tags: %W[nacimiento cumplea\u00F1os dia_cero],
-                                    description: "Lucía's Birhtday")
+                                    tags: %w[nacimiento cumple dia_cero],
+                                    description: 'Lucias Birhtday')
 papa.told_stories.find_or_create_by(title: 'Birhtday',
                                     date: Date.parse('30-04-2018'),
                                     teller_title: 'Dad',
                                     timeline: ivanyvienen,
-                                    tags: %W[cumple cumplea\u00F1os birthday],
+                                    tags: %w[cumple birthday],
                                     description: 'Ivan has arrived')
 
 # STORIES IMAGES
 file_name = 'firma_figand.jpg'
-file_path = File.join(Rails.root, 'public', 'images', file_name)
+file_path = Rails.root.join("public/images/#{file_name}")
 file = File.open(file_path)
-story = Story.last
-story.photo.attach(io: file, filename: file_name)
+
+papa.told_stories.map do |story|
+  story.photo.attach(io: file, filename: file_name) unless story.photo.attached?
+  file.rewind
+end
+
 # story.photo.attached?
+# Rails.application.routes.url_helpers.rails_blob_path(story.photo, only_path: true)
 
 # TIMELINESTELLERS
 
 # From Timeline
 luciland.tellers << mama unless luciland.tellers.include?(mama)
 ivanyvienen.tellers << mama unless luciland.tellers.include?(mama)
+
 # From teller
 papa.lines_as_teller << luciland unless papa.lines_as_teller.include?(luciland)
 papa.lines_as_teller << ivanyvienen unless papa.lines_as_teller.include?(ivanyvienen)

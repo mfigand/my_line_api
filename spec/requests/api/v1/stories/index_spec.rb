@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'index requests' do
   describe 'GET /api/v1/timelines/:timeline_id/stories' do
     subject(:endpoint_call) do
-      get "/api/v1/timelines/#{timeline.id}/stories",
+      get "/api/v1/timelines/#{timeline.id}/stories?page=1",
           headers: { 'Authentication' => auth_token }
     end
 

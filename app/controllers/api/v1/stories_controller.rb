@@ -18,7 +18,8 @@ module Api
 
       def index
         index = ::V1::Stories::IndexInteractor.new(current_user,
-                                                   safe_params[:timeline_id]).index
+                                                   safe_params[:timeline_id],
+                                                   safe_params[:page]).index
         json_response(index)
       end
 
@@ -49,12 +50,12 @@ module Api
       private
 
       def json_response(result)
-        render json: { data: result[:data] }, status: result[:status]
+        render json: { data: result[:data], meta: result[:meta] }, status: result[:status]
       end
 
       def safe_params
         params.permit(:id, :protagonist_id, :teller_id, :user_id, :title, :date,
-                      :teller_title, :timeline_id, :tags, :description, :photo)
+                      :teller_title, :timeline_id, :tags, :description, :photo, :page)
       end
 
       def validate_schema

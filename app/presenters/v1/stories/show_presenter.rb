@@ -14,8 +14,9 @@ module V1
       private
 
       def serialized_story
-        @story.slice(:id, :title, :date, :protagonist_id, :teller_id, :teller_title,
-                     :timeline_id, :tags, :description, :created_at, :updated_at)
+        s = @story.slice(:id, :title, :date, :protagonist_id, :teller_id, :teller_title,
+                         :timeline_id, :tags, :description, :created_at, :updated_at)
+        s.merge(photo_url: @story.photo_url)
       end
     end
   end

@@ -3,16 +3,19 @@
 module V1
   module Stories
     class IndexInteractor
-      def initialize(current_user, timeline_id)
+      def initialize(current_user, timeline_id, page)
         @current_user = current_user
         @timeline_id = timeline_id
+        @page = page
       end
 
       def index
         return ErrorService.new(timeline[:error], :not_found).create unless timeline.instance_of?(Timeline)
         return ApplicationPolicy.unauthorized_error unless allowed?
 
-        { data: ::V1::Stories::IndexPresenter.new(stories).serialize, status: 200 }
+        { data: ::V1::Stories::IndexPresenter.new(stories.page(@page)).serialize,
+          meta: ::PaginationService.new(stories, @page).paginate,
+          status: 200 }
       end
 
       private
